@@ -101,3 +101,12 @@ class AnimalRegistry:
                   f'{animal.species}\nStatus - {status}\n'
                   f'Commands - {", ".join(animal._commands)}\n'
                   f'--------------------------------')
+
+    def register_animal(self, identifier):
+        animal = self.find_animal_by_identifier(identifier)
+        if animal:
+            animal._registered = True
+            self.save_animals()
+            print(f'Animal with name/ID "{identifier}" registered.')
+        else:
+            print(f'Animal with name/ID "{identifier}" not found.')
