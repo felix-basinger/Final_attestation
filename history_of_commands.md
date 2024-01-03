@@ -4,7 +4,7 @@
 Просмотреть содержимое созданного файла. Переименовать файл, дав ему новое имя (Друзья человека).**
 
 sudo apt update  
-cat pets
+cat pets  
 cat > Pets.txt
 cat Pets.txt 
 cat > Pack_Animals.txt
