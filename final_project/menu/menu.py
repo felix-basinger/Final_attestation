@@ -28,6 +28,9 @@ def main_menu():
         elif choice == '6':
             identifier = input('Enter animal name or ID to search: ')
             animal_registry.search_by_id(identifier)
+        elif choice == '7':
+            keyword = input('Enter search keyword: ')
+            animal_registry.search_by_keyword(keyword)
         elif choice == '9':
             print('Exiting the program.')
             break

@@ -134,3 +134,22 @@ class AnimalRegistry:
                   f'--------------------------------')
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
+
+    def search_by_keyword(self, keyword):
+        result_animals = []
+        keyword = keyword.lower()
+
+        for animal_id, animal in self.animals.items():
+            if keyword in str(animal.id).lower() or keyword in animal.name.lower() or keyword in animal.species.lower():
+                result_animals.append(animal)
+
+        if not result_animals:
+            print(f'No animals containing "{keyword}" found.')
+        else:
+            print(f'Animals containing "{keyword}":\n--------------------------------')
+            for animal in result_animals:
+                status = 'Registered' if animal._registered else 'Not Registered'
+                print(f'ID: {animal.id}\nName: {animal.name}\nSpecies: '
+                      f'{animal.species}\n'
+                      f'Status - {status}\nCommands - {", ".join(animal._commands)}\n'
+                      f'--------------------------------')
