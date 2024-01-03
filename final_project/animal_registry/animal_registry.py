@@ -122,3 +122,15 @@ class AnimalRegistry:
                 break
         if not found:
             print(f'Animal with name/ID "{identifier}" not found.')
+
+    def search_by_id(self, identifier):
+        animal = self.find_animal_by_identifier(identifier)
+        if animal:
+            status = 'Registered' if animal._registered else 'Not Registered'
+            print(f'Animal with name/ID "{identifier}":\n--------------------------------\nName: {animal.name}\n'
+                  f'Species: {animal.species}\n'
+                  f'Status - {status}\n'
+                  f'Commands - {", ".join(animal._commands)}\n'
+                  f'--------------------------------')
+        else:
+            print(f'Animal with name/ID "{identifier}" not found.')

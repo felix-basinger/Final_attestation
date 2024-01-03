@@ -25,6 +25,9 @@ def main_menu():
             identifier = input('Enter animal name or ID: ')
             command = input('Enter command to teach: ')
             animal_registry.teach_command(identifier, command)
+        elif choice == '6':
+            identifier = input('Enter animal name or ID to search: ')
+            animal_registry.search_by_id(identifier)
         elif choice == '9':
             print('Exiting the program.')
             break
