@@ -21,6 +21,10 @@ def main_menu():
         elif choice == '4':
             identifier = input('Enter animal name or ID to register: ')
             animal_registry.register_animal(identifier)
+        elif choice == '5':
+            identifier = input('Enter animal name or ID: ')
+            command = input('Enter command to teach: ')
+            animal_registry.teach_command(identifier, command)
         elif choice == '9':
             print('Exiting the program.')
             break

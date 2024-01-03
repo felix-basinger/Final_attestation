@@ -110,3 +110,15 @@ class AnimalRegistry:
             print(f'Animal with name/ID "{identifier}" registered.')
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
+
+    def teach_command(self, identifier, command):
+        found = False
+        for animal in self.animals.values():
+            if str(animal.id) == identifier or animal.name.lower() == identifier.lower():
+                animal.add_command(command)
+                self.save_animals()
+                print(f'Command "{command}" added to animal with name/ID "{identifier}".')
+                found = True
+                break
+        if not found:
+            print(f'Animal with name/ID "{identifier}" not found.')
