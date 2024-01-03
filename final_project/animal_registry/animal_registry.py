@@ -8,6 +8,12 @@ class AnimalRegistry:
         self.animals = {}
         self.load_animals()
 
+    def find_animal_by_identifier(self, identifier):
+        for animal in self.animals.values():
+            if str(animal.id) == identifier or animal.name.lower() == identifier.lower():
+                return animal
+        return None
+
     def load_animals(self):
         try:
             with open('animals.json', 'r') as file:
@@ -73,3 +79,12 @@ class AnimalRegistry:
             print(f'{species} named "{name}" added with ID: {animal.id}')
         else:
             print("Unknown animal species.")
+
+    def remove_animal(self, identifier):
+        animal = self.find_animal_by_identifier(identifier)
+        if animal:
+            del self.animals[animal.id]
+            self.save_animals()
+            print(f'Animal with name/ID "{identifier}" removed.')
+        else:
+            print(f'Animal with name/ID "{identifier}" not found.')

@@ -13,5 +13,11 @@ def main_menu():
             name = input('Enter animal name: ')
             species = input('Enter animal species: ')
             animal_registry.add_animal(name, species)
+        elif choice == '2':
+            identifier = input('Enter animal name or ID to remove: ')
+            animal_registry.remove_animal(identifier)
+        elif choice == '9':
+            print('Exiting the program.')
+            break
         else:
             print('Invalid choice. Please enter a number between 1 and 9.')
