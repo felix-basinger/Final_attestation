@@ -3,6 +3,8 @@ from final_project.animals.pack_animals.pack_an import Camel, Horse, Donkey
 from final_project.animals.pets.pets import Dog, Cat, Hamster
 
 
+# Класс, в котором описывается логика работы приложения
+# и обозначены все функции, задействованые в работе
 class AnimalRegistry:
     def __init__(self):
         self.animals = {}
@@ -14,6 +16,8 @@ class AnimalRegistry:
                 return animal
         return None
 
+# Функция создания JSON файла, хранящего информацию о животных
+# Информация хранится в файле в виде вложенных списков
     def load_animals(self):
         try:
             with open('animals.json', 'r') as file:
@@ -45,6 +49,7 @@ class AnimalRegistry:
         except json.JSONDecodeError:
             print('Error decoding JSON file.')
 
+# Функция записи информации в JSON файл и сохранение этой информации
     def save_animals(self):
         data = {
             str(animal.id): {
@@ -58,6 +63,7 @@ class AnimalRegistry:
         with open('animals.json', 'w') as file:
             json.dump(data, file, indent=2)
 
+# Функция добавления животного в реестр питомника
     def add_animal(self, name, species):
         animal = None
         if species.lower() == "dog":
@@ -80,6 +86,7 @@ class AnimalRegistry:
         else:
             print("Unknown animal species.")
 
+# Функция удаления животного из реестра
     def remove_animal(self, identifier):
         animal = self.find_animal_by_identifier(identifier)
         if animal:
@@ -89,6 +96,7 @@ class AnimalRegistry:
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
 
+# Функция просмотра животных, содержащихся в реестре
     def view_animals(self):
         if not self.animals:
             print('No animals registered.')
@@ -102,6 +110,7 @@ class AnimalRegistry:
                   f'Commands - {", ".join(animal._commands)}\n'
                   f'--------------------------------')
 
+# Функция регистрации животного в реестре
     def register_animal(self, identifier):
         animal = self.find_animal_by_identifier(identifier)
         if animal:
@@ -111,6 +120,8 @@ class AnimalRegistry:
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
 
+# Функция обучения животного командам
+# Команды хранятся в списке конкретного животного в виде списка
     def teach_command(self, identifier, command):
         found = False
         for animal in self.animals.values():
@@ -123,6 +134,7 @@ class AnimalRegistry:
         if not found:
             print(f'Animal with name/ID "{identifier}" not found.')
 
+# Функция поиска животного по имени или его ID
     def search_by_id(self, identifier):
         animal = self.find_animal_by_identifier(identifier)
         if animal:
@@ -135,6 +147,7 @@ class AnimalRegistry:
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
 
+# Функция поиска животных по какому-либо ключевомуу слову из их описания
     def search_by_keyword(self, keyword):
         result_animals = []
         keyword = keyword.lower()
@@ -154,10 +167,11 @@ class AnimalRegistry:
                       f'Status - {status}\nCommands - {", ".join(animal._commands)}\n'
                       f'--------------------------------')
 
+# Функция показа класса, к котрому относится животное
+# (класс животного определяется в фунции add_animal)
     def display_animal_type(self, identifier):
         animal = self.find_animal_by_identifier(identifier)
         if animal:
-            # Определение класса животного
             if isinstance(animal, Dog):
                 animal_type = "Dog"
             elif isinstance(animal, Cat):
