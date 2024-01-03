@@ -16,6 +16,8 @@ def main_menu():
         elif choice == '2':
             identifier = input('Enter animal name or ID to remove: ')
             animal_registry.remove_animal(identifier)
+        elif choice == '3':
+            animal_registry.view_animals()
         elif choice == '9':
             print('Exiting the program.')
             break

@@ -88,3 +88,16 @@ class AnimalRegistry:
             print(f'Animal with name/ID "{identifier}" removed.')
         else:
             print(f'Animal with name/ID "{identifier}" not found.')
+
+    def view_animals(self):
+        if not self.animals:
+            print('No animals registered.')
+            return
+
+        print('Animal Registry:\n--------------------------------')
+        for animal_id, animal in self.animals.items():
+            status = 'Registered' if animal._registered else 'Not Registered'
+            print(f'ID: {animal.id}\nName: {animal.name}\nSpecies: '
+                  f'{animal.species}\nStatus - {status}\n'
+                  f'Commands - {", ".join(animal._commands)}\n'
+                  f'--------------------------------')
