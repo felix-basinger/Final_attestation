@@ -153,3 +153,26 @@ class AnimalRegistry:
                       f'{animal.species}\n'
                       f'Status - {status}\nCommands - {", ".join(animal._commands)}\n'
                       f'--------------------------------')
+
+    def display_animal_type(self, identifier):
+        animal = self.find_animal_by_identifier(identifier)
+        if animal:
+            # Определение класса животного
+            if isinstance(animal, Dog):
+                animal_type = "Dog"
+            elif isinstance(animal, Cat):
+                animal_type = "Cat"
+            elif isinstance(animal, Hamster):
+                animal_type = "Hamster"
+            elif isinstance(animal, Camel):
+                animal_type = "Camel"
+            elif isinstance(animal, Horse):
+                animal_type = "Horse"
+            elif isinstance(animal, Donkey):
+                animal_type = "Donkey"
+            else:
+                animal_type = "Unknown"
+
+            print(f'Animal with name/ID "{identifier}" is a {animal_type}.')
+        else:
+            print(f'Animal with name/ID "{identifier}" not found.')
