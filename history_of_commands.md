@@ -9,7 +9,6 @@ cat > Pets.txt
 cat Pets.txt   
 cat > Pack_Animals.txt  
 cat Pack_Animals.txt  
-cat Pets.txt Pack_Animals.txt > Human's_Friends.txt  
 cat Pets.txt Pack_Animals.txt > Human_Friends.txt  
 cat Human_Friends.txt  
 
